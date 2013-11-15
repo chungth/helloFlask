@@ -40,7 +40,9 @@ class DetailView(MethodView):
             form.populate_obj(comment)
 
             post = context.get('post')
-            post.comments.append(comment)
+            for i in range(1000):
+                comment.body = "this is comment " + " " + str(i);
+                post.comments.append(comment)
             post.save()
 
             return redirect(url_for('posts.detail', slug=slug))
